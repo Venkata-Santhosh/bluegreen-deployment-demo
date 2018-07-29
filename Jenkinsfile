@@ -6,9 +6,11 @@ node {
   }
   stage("build") {
     echo "building demo project"
-    docker.image('maven').inside() {
-                sh 'mvn -B clean install'
-    }
+    docker.image('node:7-alpine').inside {
+            stage('Test') {
+                sh 'node --version'
+            }
+        }
   }
   stage("deploy") {
     echo "deploying demo project"
