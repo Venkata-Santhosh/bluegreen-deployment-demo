@@ -6,7 +6,7 @@ node {
   }
   stage("build") {
     echo "building demo project"
-    docker.image('maven:3.3.9-jdk-8-alpine').inside() {
+    docker.image('maven').inside() {
                 sh 'mvn -B clean install'
     }
   }
