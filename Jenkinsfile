@@ -1,16 +1,17 @@
 node {
-  stage("clone") {
+  stage("Checkout") {
     echo "cloning demo project"
     checkout scm
 
   }
-  stage("build") {
+  stage("Build") {
     echo "building demo project"
      docker.image('maven').inside() {
                 sh 'mvn -B clean install'
      }
   }
-  stage("deploy") {
+  stage("Deploy") {
     echo "deploying demo project"
+
   }
 }
