@@ -6,11 +6,9 @@ node {
   }
   stage("build") {
     echo "building demo project"
-    docker.image('node:7-alpine').inside {
-            stage('Test') {
-                sh 'node --version'
-            }
-        }
+     docker.image('maven:3.3.9-jdk-8-alpine').inside() {
+                sh 'mvn -B clean install'
+     }
   }
   stage("deploy") {
     echo "deploying demo project"
